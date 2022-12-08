@@ -1,0 +1,7 @@
+package ru.nir;
+
+public class MainApplication {
+    public static void main(String[] args) {
+
+    }
+}
