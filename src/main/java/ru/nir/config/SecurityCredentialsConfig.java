@@ -24,7 +24,6 @@ import ru.nir.service.UserService;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-
 public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

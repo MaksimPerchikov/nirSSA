@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ru.nir.except.ResourceNotFoundException;
 import ru.nir.model.InstaUserDetails;
-import ru.nir.model.User;
 import ru.nir.model.UserSumm;
 import ru.nir.service.UserService;
 
@@ -52,26 +51,6 @@ public class UserEndpoint {
             .username(userDetails.getUsername())
             .name(userDetails.getUserProfile().getDisplayName())
             .profilePicture(userDetails.getUserProfile().getProfilePictureUrl())
-            .build();
-    }
-
-    @GetMapping(value = "/users/summary/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getUserSummary(@PathVariable("username") String username) {
-        log.info("retrieving user {}", username);
-
-        return  userService
-            .findByUsername(username)
-            .map(user -> ResponseEntity.ok(convertTo(user)))
-            .orElseThrow(() -> new ResourceNotFoundException(username));
-    }
-
-    private UserSumm convertTo(User user) {
-        return UserSumm
-            .builder()
-            .id(user.getId())
-            .username(user.getUsername())
-            .name(user.getUserProfile().getDisplayName())
-            .profilePicture(user.getUserProfile().getProfilePictureUrl())
             .build();
     }
 }

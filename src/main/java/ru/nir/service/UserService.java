@@ -25,7 +25,6 @@ import ru.nir.repository.UserRepository;
 @Slf4j
 public class UserService {
 
-
      private PasswordEncoder passwordEncoder;
      private final UserRepository userRepository;
      private AuthenticationManager authenticationManager;
